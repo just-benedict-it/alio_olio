@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/alio_olio.git/static/css/main.b23629ce.css",
-    "main.js": "/alio_olio.git/static/js/main.c48f0bcd.js",
-    "index.html": "/alio_olio.git/index.html",
-    "main.b23629ce.css.map": "/alio_olio.git/static/css/main.b23629ce.css.map",
-    "main.c48f0bcd.js.map": "/alio_olio.git/static/js/main.c48f0bcd.js.map"
+    "main.css": "/alio_olio/static/css/main.b23629ce.css",
+    "main.js": "/alio_olio/static/js/main.c48f0bcd.js",
+    "index.html": "/alio_olio/index.html",
+    "main.b23629ce.css.map": "/alio_olio/static/css/main.b23629ce.css.map",
+    "main.c48f0bcd.js.map": "/alio_olio/static/js/main.c48f0bcd.js.map"
   },
   "entrypoints": [
     "static/css/main.b23629ce.css",
