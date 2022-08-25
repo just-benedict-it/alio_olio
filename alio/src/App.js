@@ -1,26 +1,30 @@
 import "./App.css";
 import Item from "./Components/Item.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Components/components.css";
 import "./Components/button.css";
 // import ProgressBar from "./Components/Slider.js";
 
 function ProgressBar(props) {
-  let { idx, bgcolor, completed, name, brand, setTestData } = props;
+  let { idx, bgcolor, completed, name, brand, getData, testData } = props;
   const [btnLimit, setbtnLimit] = useState(false);
 
-  const totalUpOnce = () => {
-    // setTestData((e) => e[idx].completed++);
-    setTestData((prevDataInfo) => ({
-      ...prevDataInfo,
-      completed: completed++,
-    }));
+  const totalUpOnce = (id) => {
+    const dataCopy = [...testData];
+    // console.log(dataCopy[idx]);
+    console.log(id);
+    dataCopy[id].completed += 1;
+    getData(() => dataCopy);
+    console.log(dataCopy);
     setbtnLimit((e) => !e);
   };
+
   const onClickUp = (e) => {
+    e.preventDefault();
     {
-      e.preventDefault();
-      btnLimit ? alert("이미 올린 항목입니다") : totalUpOnce();
+      btnLimit
+        ? alert("이미 올린 항목입니다")
+        : totalUpOnce(e.nativeEvent.path[2].id);
     }
   };
 
@@ -40,7 +44,7 @@ function ProgressBar(props) {
   };
 
   return (
-    <div className="bodyStyles">
+    <div id={idx} className="bodyStyles">
       <div className="nameAndTotal">
         <span className="labelStyles">{`${name}`}</span>
         <span className="labelStyles">{`${completed}%`}</span>
@@ -67,32 +71,32 @@ const datas = [
     brand: "Nene Chicken",
     name: "오리엔탈파닭",
     bgcolor: "#ef6c00",
-    completed: 60,
+    completed: 59,
   },
   { brand: "Kyochon", name: "레드콤보", bgcolor: "#FF0000", completed: 50 },
   {
     brand: "Nene Chicken",
     name: "스노윙 치킨",
     bgcolor: "#af6c00",
-    completed: 50,
+    completed: 49,
   },
   {
     brand: "Pelicana",
     name: "양념치킨",
     bgcolor: "#CC0000",
-    completed: 50,
+    completed: 48,
   },
   {
     brand: "Goubne",
     name: "고추 바사삭",
     bgcolor: "#330000",
-    completed: 50,
+    completed: 48,
   },
   {
     brand: "Hosigi",
     name: "매운 간장치킨",
     bgcolor: "#660099",
-    completed: 50,
+    completed: 60,
   },
   { brand: "bhc", name: "맛초킹", bgcolor: "#CC33CC", completed: 50 },
   {
@@ -111,19 +115,22 @@ const datas = [
 
 function App() {
   const [testData, setTestData] = useState(datas);
+
+  const getData = (data) => {
+    setTestData(data);
+    console.log(data);
+    sortByNum();
+  };
+
   const sortByNum = () => {
     const sorted = [...testData].sort((a, b) => {
       return b.completed - a.completed;
     });
     setTestData(sorted);
+    console.log("renderd!!");
   };
 
-  sortByNum();
-
-  // testData.sort(function compare(a, b) {
-  //   return b.completed - a.completed;
-  // });
-
+  useEffect(() => sortByNum(), []);
   return (
     <div>
       <h1>올리오</h1>
@@ -132,13 +139,14 @@ function App() {
 
       {testData.map((item, idx) => (
         <ProgressBar
+          getData={getData}
           key={idx}
           idx={idx}
+          brand={item.brand}
           name={item.name}
           bgcolor={item.bgcolor}
           completed={item.completed}
-          brand={item.brand}
-          setTestData={setTestData}
+          testData={testData}
         />
       ))}
     </div>
