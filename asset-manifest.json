@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/alio_olio.git/static/css/main.b23629ce.css",
+    "main.js": "/alio_olio.git/static/js/main.413d1427.js",
+    "index.html": "/alio_olio.git/index.html",
+    "main.b23629ce.css.map": "/alio_olio.git/static/css/main.b23629ce.css.map",
+    "main.413d1427.js.map": "/alio_olio.git/static/js/main.413d1427.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b23629ce.css",
+    "static/js/main.413d1427.js"
+  ]
+}
