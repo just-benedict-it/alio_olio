@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/alio_olio/static/css/main.2a07f4b7.css",
+    "main.css": "/alio_olio/static/css/main.c6123ad7.css",
     "main.js": "/alio_olio/static/js/main.1ef828f8.js",
     "index.html": "/alio_olio/index.html",
-    "main.2a07f4b7.css.map": "/alio_olio/static/css/main.2a07f4b7.css.map",
+    "main.c6123ad7.css.map": "/alio_olio/static/css/main.c6123ad7.css.map",
     "main.1ef828f8.js.map": "/alio_olio/static/js/main.1ef828f8.js.map"
   },
   "entrypoints": [
-    "static/css/main.2a07f4b7.css",
+    "static/css/main.c6123ad7.css",
     "static/js/main.1ef828f8.js"
   ]
 }
