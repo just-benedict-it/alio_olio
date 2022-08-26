@@ -1,22 +1,19 @@
 import "./App.css";
-import Item from "./Components/Item.js";
 import { useState, useEffect } from "react";
 import "./Components/components.css";
-import "./Components/button.css";
-// import ProgressBar from "./Components/Slider.js";
 
 function ProgressBar(props) {
-  let { idx, bgcolor, completed, name, brand, getData, testData } = props;
-  const [btnLimit, setbtnLimit] = useState(false);
-
+  let { idx, bgcolor, completed, name, brand, getData, testData, btnLimit } =
+    props;
+  // const a = getComputedStyle(completed).getPropertyValue("--completed");
   const totalUpOnce = (id) => {
     const dataCopy = [...testData];
-    // console.log(dataCopy[idx]);
-    console.log(id);
+    // console.log("id : ", id);
     dataCopy[id].completed += 1;
+    dataCopy[id].btnLimit = !btnLimit;
+
     getData(() => dataCopy);
-    console.log(dataCopy);
-    setbtnLimit((e) => !e);
+    // console.log("dataCopy : ", dataCopy);
   };
 
   const onClickUp = (e) => {
@@ -29,8 +26,8 @@ function ProgressBar(props) {
   };
 
   const containerStyles = {
-    height: 50,
-    width: "50%",
+    height: 20,
+    width: "30%",
     backgroundColor: "#e0e0de",
     borderRadius: 50,
     margin: 50,
@@ -49,7 +46,7 @@ function ProgressBar(props) {
         <span className="labelStyles">{`${name}`}</span>
         <span className="labelStyles">{`${completed}%`}</span>
       </div>
-      <div style={containerStyles}>
+      <div style={containerStyles} className="containerStyles">
         <div style={fillerStyles} className="fillerStyles">
           <span className="labelStylesSmall">{`${brand}`}</span>
         </div>
@@ -65,60 +62,92 @@ function ProgressBar(props) {
 }
 
 const datas = [
-  { brand: "bhc", name: "뿌링클", bgcolor: "#66FF00", completed: 45 },
-  { brand: "bbq", name: "황금올리브", bgcolor: "#FFCC00", completed: 60 },
+  {
+    brand: "bhc",
+    name: "뿌링클",
+    bgcolor: "#66FF00",
+    completed: 45,
+    btnLimit: false,
+  },
+  {
+    brand: "bbq",
+    name: "황금올리브",
+    bgcolor: "#FFCC00",
+    completed: 60,
+    btnLimit: false,
+  },
   {
     brand: "Nene Chicken",
     name: "오리엔탈파닭",
     bgcolor: "#ef6c00",
     completed: 59,
+    btnLimit: false,
   },
-  { brand: "Kyochon", name: "레드콤보", bgcolor: "#FF0000", completed: 50 },
+  {
+    brand: "Kyochon",
+    name: "레드콤보",
+    bgcolor: "#FF0000",
+    completed: 50,
+    btnLimit: false,
+  },
   {
     brand: "Nene Chicken",
     name: "스노윙 치킨",
     bgcolor: "#af6c00",
     completed: 49,
+    btnLimit: false,
   },
   {
     brand: "Pelicana",
     name: "양념치킨",
     bgcolor: "#CC0000",
     completed: 48,
+    btnLimit: false,
   },
   {
     brand: "Goubne",
     name: "고추 바사삭",
     bgcolor: "#330000",
     completed: 48,
+    btnLimit: false,
   },
   {
     brand: "Hosigi",
     name: "매운 간장치킨",
     bgcolor: "#660099",
     completed: 60,
+    btnLimit: false,
   },
-  { brand: "bhc", name: "맛초킹", bgcolor: "#CC33CC", completed: 50 },
+  {
+    brand: "bhc",
+    name: "맛초킹",
+    bgcolor: "#CC33CC",
+    completed: 50,
+    btnLimit: false,
+  },
   {
     brand: "CHEOGAJIP",
     name: "슈프림 양념치킨",
     bgcolor: "#FF6666",
     completed: 50,
+    btnLimit: false,
   },
   {
     brand: "Kyochon",
     name: "허니콤보",
     bgcolor: "#bf6c00",
     completed: 50,
+    btnLimit: false,
   },
 ];
 
 function App() {
   const [testData, setTestData] = useState(datas);
 
+  // console.log("testData : ", testData);
   const getData = (data) => {
     setTestData(data);
-    console.log(data);
+    // console.log("data : ", data);
     sortByNum();
   };
 
@@ -127,8 +156,9 @@ function App() {
       return b.completed - a.completed;
     });
     setTestData(sorted);
-    console.log("renderd!!");
+    // console.log("renderd!!");
   };
+  const [btnLimit, setbtnLimit] = useState(false);
 
   useEffect(() => sortByNum(), []);
   return (
@@ -147,6 +177,7 @@ function App() {
           bgcolor={item.bgcolor}
           completed={item.completed}
           testData={testData}
+          btnLimit={item.btnLimit}
         />
       ))}
     </div>
