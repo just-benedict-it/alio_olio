@@ -42,14 +42,19 @@ body {
 .bodyStyles {
   display: flex;
   justify-content: center;
-  margin-left: 5rem;
+  /* margin-left: 5rem; */
   align-items: center;
 }
 .nameAndTotal {
+  white-space: pre-wrap;
   display: flex;
   flex-direction: column;
+  /* flex-grow: 1; */
+  width: 20%;
+  margin-left: 0.5rem;
 }
 .containerStyles {
+  /* flex-grow: 1; */
 }
 
 .fillerStyles {
@@ -73,6 +78,10 @@ body {
   font-size: 1rem;
   font-family: "Chakra Petch", sans-serif;
 }
+.buttonContainer {
+  /* flex-grow: 0; */
+  margin-right: 0.5rem;
+}
 
 /* @media screen and (max-width : 1200px) { 
   .box { 
@@ -83,12 +92,18 @@ body {
 @media screen and (max-width: 768px) {
   body {
   }
+  .bodyStyles {
+    display: flex;
+    justify-content: center;
+    margin-left: 0rem;
+    align-items: center;
+  }
   /* header */
   h1 {
     font-size: 1.2rem;
   }
   p {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
   }
   /* 치킨이름 */
   .labelStyles {
@@ -96,6 +111,22 @@ body {
     font-weight: 500;
     font-size: 1rem;
   }
+  /* 브랜드이름 */
+  .labelStylesSmall {
+    padding: 2;
+    color: #000000;
+    font-weight: 500;
+    font-size: 0.6rem;
+    font-family: "Chakra Petch", sans-serif;
+    text-align: right;
+  }
+
+  .fillerStyles {
+    justify-content: right;
+    padding-right: 0rem;
+    text-align: right;
+  }
+
   /* 버튼 */
   a {
     -webkit-transition: all 200ms cubic-bezier(0.39, 0.5, 0.15, 1.36);
