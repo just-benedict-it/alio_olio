@@ -45,7 +45,7 @@ function ProgressBar(props) {
       }
     });
     sortByNum(() => dataCopy);
-    axios.post(`http://127.0.0.1:8000/chickens/${clickedId}`);
+    axios.post(`https://olio-back-server.herokuapp.com/chickens/${clickedId}`);
   };
   const onClick = (e) => {
     e.preventDefault();

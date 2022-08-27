@@ -8,7 +8,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/chickens")
+    fetch("https://olio-back-server.herokuapp.com/chickens")
       .then((response) => response.json())
       .then((json) => {
         setTestData(
